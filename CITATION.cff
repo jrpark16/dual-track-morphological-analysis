@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated manuscript."
+title: "Dual-Track Morphological Analysis for Humanoid Robot Technology Opportunity Discovery"
+authors:
+  - family-names: Park
+    given-names: Jungryeol
+  - family-names: Shin
+    given-names: Kangsun
+repository-code: "https://github.com/jrpark16/dual-track-morphological-analysis"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Technology Opportunity Discovery for Humanoid Robots Using Dual-Track Morphological Analysis Integrating Technological Feasibility and Social Acceptance"
+  authors:
+    - family-names: Park
+      given-names: Jungryeol
+    - family-names: Shin
+      given-names: Kangsun
+  journal: "Scientific Reports"
+  year: 2026
+  notes: "Under review."
