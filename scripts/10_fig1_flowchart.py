@@ -1,0 +1,180 @@
+# -*- coding: utf-8 -*-
+"""Figure 1: standard flowchart of the dual-track framework with
+decision points, feedback paths and iterative steps (Reviewer 3, comment 2)."""
+import sys, io
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch, Polygon, FancyArrowPatch, Rectangle
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+import os
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "output", "figures", "Figure1.png")
+os.makedirs(os.path.dirname(OUT), exist_ok=True)
+plt.rcParams.update({"font.family": "Arial", "figure.dpi": 300,
+                     "savefig.dpi": 300, "savefig.bbox": "tight"})
+
+C_A, C_B, C_M, C_L, C_E = "#dce8f5", "#f7e2e2", "#fdf3d8", "#e8e8f5", "#e2efe4"
+E_A, E_B, E_M, E_L, E_E = "#2563a8", "#c0394b", "#c9a227", "#5b5b9e", "#2f7d5e"
+C_D, E_D = "#fff8e6", "#b7791f"
+GREY = "#444444"
+FS = 7.9
+LH = 0.265
+
+fig, ax = plt.subplots(figsize=(10.6, 13.0))
+ax.set_xlim(0, 10.6); ax.set_ylim(0, 13.0); ax.axis("off")
+
+
+def _lines(cx, cy, lines, bold_first, fs=FS):
+    n = len(lines)
+    y0 = cy + (n - 1) * LH / 2
+    for i, ln in enumerate(lines):
+        ax.text(cx, y0 - i * LH, ln, ha="center", va="center", fontsize=fs,
+                fontweight="bold" if (i == 0 and bold_first) else "normal", zorder=5)
+
+
+def process(cx, cy, w, h, lines, fc, ec, bold_first=False):
+    ax.add_patch(FancyBboxPatch((cx - w / 2, cy - h / 2), w, h, boxstyle="round,pad=0.03",
+                                fc=fc, ec=ec, lw=1.3, zorder=4))
+    _lines(cx, cy, lines, bold_first)
+
+
+def decision(cx, cy, w, h, lines):
+    ax.add_patch(Polygon([(cx, cy + h / 2), (cx + w / 2, cy), (cx, cy - h / 2), (cx - w / 2, cy)],
+                         closed=True, fc=C_D, ec=E_D, lw=1.3, zorder=4))
+    _lines(cx, cy, lines, False, fs=FS - 0.4)
+
+
+def terminal(cx, cy, w, h, text):
+    ax.add_patch(FancyBboxPatch((cx - w / 2, cy - h / 2), w, h,
+                                boxstyle="round,pad=0.03,rounding_size=0.25",
+                                fc="#f2f2f2", ec="#666666", lw=1.3, zorder=4))
+    ax.text(cx, cy, text, ha="center", va="center", fontsize=FS, fontweight="bold", zorder=5)
+
+
+def data(cx, cy, w, h, lines, fc, ec):
+    sk = 0.16
+    ax.add_patch(Polygon([(cx - w / 2 + sk, cy + h / 2), (cx + w / 2 + sk, cy + h / 2),
+                          (cx + w / 2 - sk, cy - h / 2), (cx - w / 2 - sk, cy - h / 2)],
+                         closed=True, fc=fc, ec=ec, lw=1.3, zorder=4))
+    _lines(cx, cy, lines, True)
+
+
+def arrow(p1, p2, ls="-", color=GREY):
+    ax.add_patch(FancyArrowPatch(p1, p2, arrowstyle="-|>", mutation_scale=11, color=color,
+                                 lw=1.1, linestyle=ls, shrinkA=0, shrinkB=0, zorder=3))
+
+
+def polyline(pts, ls="--", color=GREY, arrow_end=True):
+    for a, b in zip(pts[:-1], pts[1:]):
+        ax.plot([a[0], b[0]], [a[1], b[1]], color=color, lw=1.1, ls=ls, zorder=3,
+                solid_capstyle="round")
+    if arrow_end:
+        a, b = pts[-2], pts[-1]
+        arrow(a, b, ls=ls, color=color)
+
+
+def label(x, y, s, rot=0):
+    ax.text(x, y, s, fontsize=FS - 0.7, ha="center", va="center", rotation=rot, color=GREY,
+            bbox=dict(fc="white", ec="none", pad=1.0), zorder=6)
+
+
+def stage(y_top, y_bot, text):
+    ax.add_patch(Rectangle((0.15, y_bot), 10.3, y_top - y_bot, fc="none", ec="#bbbbbb",
+                           lw=0.8, ls=(0, (3, 3)), zorder=1))
+    ax.text(0.27, y_top - 0.12, text, fontsize=FS + 0.8, fontweight="bold", ha="left",
+            va="top", color="#333333", zorder=5)
+
+
+XA, XB, XC = 2.25, 5.3, 8.45          # three columns
+
+# ------------------------------------------------------------ Stage 1
+stage(12.85, 10.45, "Stage 1  Heterogeneous data collection and preprocessing")
+terminal(XB, 12.5, 1.6, 0.36, "Start")
+data(XA, 11.75, 2.4, 0.85, ["Track A: patents", "WINTELIPS query,", "2,638 records"], C_A, E_A)
+data(XB, 11.75, 2.4, 0.85, ["Track B: comments", "4 flagship demo videos,", "3,484 comments"], C_B, E_B)
+arrow((XB - 0.8, 12.5), (XA, 12.18)); arrow((XB, 12.32), (XB, 12.18))
+decision(XC, 11.75, 2.5, 1.0, ["Source and window", "verified? (video identity,", "application dates)"])
+arrow((XB + 1.35, 11.75), (XC - 1.25, 11.75))
+polyline([(XC, 12.25), (XC, 12.5), (XB + 0.8, 12.5)], ls="--")
+label(XC - 0.6, 12.62, "no: re-collect / re-export")
+process(XA, 10.9, 2.5, 0.7, ["Filter S1-S4: period, design", "rights, family dedup, relevance", "→ 824 valid patents"], C_A, E_A)
+process(XB, 10.9, 2.5, 0.7, ["Clean, English only, spam", "removal → 2,789 comments;", "VADER sentiment (eq. 1)"], C_B, E_B)
+polyline([(XC, 11.25), (XC, 10.9), (XB + 1.25, 10.9)], ls="-")
+label(XC + 0.3, 11.1, "yes")
+arrow((XA, 11.32), (XA, 11.25)); arrow((XB, 11.32), (XB, 11.25))
+
+# ------------------------------------------------------------ Stage 2
+stage(10.4, 6.55, "Stage 2  Dual-track dimension derivation (run independently per track)")
+process(XA, 9.7, 2.5, 0.7, ["Embed (MiniLM) → UMAP (5-d)", "→ K-means for each K in range", "→ c-TF-IDF terms (eq. 2)"], C_A, E_A)
+process(XB, 9.7, 2.5, 0.7, ["Embed (MiniLM) → UMAP (5-d)", "→ K-means for each K in range", "→ c-TF-IDF terms (eq. 2)"], C_B, E_B)
+arrow((XA, 10.55), (XA, 10.05)); arrow((XB, 10.55), (XB, 10.05))
+process(XC, 9.7, 2.5, 0.7, ["NPMI coherence for every", "candidate K (eqs. 3, 4);", "K* = argmax coherence"], C_M, E_M)
+arrow((XA + 1.25, 9.7), (XB - 1.25, 9.7)); arrow((XB + 1.25, 9.7), (XC - 1.25, 9.7))
+decision(XC, 8.75, 2.5, 0.95, ["Coherence maximum", "inside the scanned", "range?"])
+arrow((XC, 9.35), (XC, 9.23))
+polyline([(XC + 1.25, 8.75), (10.05, 8.75), (10.05, 9.7), (XC + 1.25, 9.7)], ls="--")
+label(10.05, 9.28, "no: widen range", rot=90)
+process(XC, 7.75, 2.5, 0.7, ["Fit final model at K*", "(A: K* = 14; B: K* = 15);", "assign every document"], C_M, E_M)
+arrow((XC, 8.27), (XC, 8.1)); label(XC + 0.3, 8.2, "yes")
+process(XB, 7.75, 2.9, 0.7, ["Theory-guided topic → dimension", "mapping (P-C-A; pragmatic/hedonic", "+ acceptance); shares (eq. 5)"], C_L, E_L)
+arrow((XC - 1.25, 7.75), (XB + 1.45, 7.75))
+decision(XA, 7.75, 2.4, 0.95, ["Topic assignment", "unambiguous?"])
+arrow((XB - 1.45, 7.75), (XA + 1.2, 7.75))
+process(XA, 6.9, 2.5, 0.5, ["Inspect sampled documents;", "reassign and document"], "#f2f2f2", "#666666")
+arrow((XA, 7.27), (XA, 7.15)); label(XA + 0.3, 7.22, "no")
+polyline([(XA - 1.25, 6.9), (0.5, 6.9), (0.5, 7.75), (XA - 1.2, 7.75)], ls="--")
+label(0.5, 7.33, "re-map", rot=90)
+
+# ------------------------------------------------------------ Stage 3
+stage(6.5, 4.75, "Stage 3  Integrated dual-track morphological matrix")
+data(XA + 0.15, 5.9, 3.0, 0.62, ["5 technological + 4 experiential", "dimensions with shares and sentiment"], C_L, E_L)
+polyline([(XA - 1.2, 7.75), (XA - 1.55, 7.75), (XA - 1.55, 5.9), (XA + 0.15 - 1.5, 5.9)], ls="-")
+label(XA - 1.55, 6.62, "yes", rot=90)
+process(XB + 0.5, 5.9, 2.9, 0.7, ["Extract high c-TF-IDF terms per", "dimension → merge synonyms →", "4 attributes per dimension"], C_L, E_L)
+arrow((XA + 0.15 + 1.5, 5.9), (XB + 0.5 - 1.45, 5.9))
+decision(XC + 0.1, 5.9, 2.3, 0.95, ["Attributes distinct", "and traceable to", "topics?"])
+arrow((XB + 0.5 + 1.45, 5.9), (XC + 0.1 - 1.15, 5.9))
+polyline([(XC + 0.1, 6.37), (XC + 0.1, 6.5), (XB + 0.5, 6.5), (XB + 0.5, 6.25)], ls="--")
+label(XB + 1.9, 6.5, "no: re-merge")
+data(XC + 0.1, 5.1, 2.4, 0.55, ["Dual-track matrix, 9 × 4", "4^9 combinations (eq. 6)"], C_M, E_M)
+arrow((XC + 0.1, 5.43), (XC + 0.1, 5.38)); label(XC + 0.45, 5.46, "yes")
+
+# ------------------------------------------------------------ Stage 4
+stage(4.75, 1.55, "Stage 4  LLM-based generative inference and preliminary validation")
+process(XC + 0.1, 3.98, 2.3, 0.75, ["Condition-controlled prompts:", "dual-track / technology-push /", "unconstrained (independent sessions)"], C_E, E_E)
+arrow((XC + 0.1, 4.83), (XC + 0.1, 4.36))
+process(XB + 0.35, 3.98, 2.5, 0.75, ["Turn 1: generate 9 candidates", "(all dimensions, P-C-A loop,", "acceptance constraints)"], C_E, E_E)
+arrow((XC + 0.1 - 1.15, 3.98), (XB + 0.35 + 1.25, 3.98))
+decision(XA + 0.15, 3.98, 2.6, 0.95, ["Candidate satisfies", "every constraint?"])
+arrow((XB + 0.35 - 1.25, 3.98), (XA + 0.15 + 1.3, 3.98))
+polyline([(XA + 0.15, 4.46), (XA + 0.15, 4.52), (XB + 0.35, 4.52), (XB + 0.35, 4.36)], ls="--")
+label(XB - 0.75, 4.52, "no: revise candidate")
+process(XA + 0.15, 3.05, 2.6, 0.75, ["Turn 2: self-score C1-C3 (eq. 7),", "rank; top 3 advance to", "seven-field concept sheets"], C_E, E_E)
+arrow((XA + 0.15, 3.5), (XA + 0.15, 3.43)); label(XA + 0.5, 3.47, "yes")
+data(XB + 0.5, 3.05, 2.6, 0.62, ["9 blinded concept sheets", "(3 per condition, R1-R9)"], C_E, E_E)
+arrow((XA + 0.15 + 1.3, 3.05), (XB + 0.5 - 1.45, 3.05))
+process(XC + 0.1, 3.05, 2.5, 0.75, ["Blinded expert evaluation", "(N = 20): feasibility, acceptance,", "novelty; ICC, Friedman tests"], C_E, E_E)
+arrow((XB + 0.5 + 1.45, 3.05), (XC + 0.1 - 1.25, 3.05))
+decision(XC + 0.1, 2.15, 2.5, 0.85, ["Dual-track ≥ baselines", "on feasibility?"])
+arrow((XC + 0.1, 2.67), (XC + 0.1, 2.58))
+terminal(XB + 0.5, 2.15, 3.0, 0.4, "End: screened concepts + evidence")
+arrow((XC + 0.1 - 1.25, 2.15), (XB + 0.5 + 1.5, 2.15)); label(XC - 1.2, 2.3, "yes")
+polyline([(XC + 0.1 + 1.25, 2.15), (10.1, 2.15), (10.1, 5.1), (XC + 0.1 + 1.2, 5.1)], ls="--")
+label(10.1, 3.6, "no: revise constraints / attributes", rot=90)
+
+# ------------------------------------------------------------ legend
+lx, ly = 0.35, 1.2
+ax.add_patch(FancyBboxPatch((lx, ly - 0.14), 0.5, 0.28, boxstyle="round,pad=0.02", fc="#eeeeee", ec="#666666", lw=1))
+ax.text(lx + 0.62, ly, "process", fontsize=FS - 0.4, va="center")
+ax.add_patch(Polygon([(lx + 2.0, ly + 0.17), (lx + 2.35, ly), (lx + 2.0, ly - 0.17), (lx + 1.65, ly)], fc=C_D, ec=E_D, lw=1))
+ax.text(lx + 2.47, ly, "decision", fontsize=FS - 0.4, va="center")
+ax.add_patch(Polygon([(lx + 3.75, ly + 0.14), (lx + 4.3, ly + 0.14), (lx + 4.2, ly - 0.14), (lx + 3.65, ly - 0.14)], fc="#eeeeee", ec="#666666", lw=1))
+ax.text(lx + 4.42, ly, "data / artefact", fontsize=FS - 0.4, va="center")
+ax.plot([lx + 6.0, lx + 6.6], [ly, ly], color=GREY, lw=1.1); ax.text(lx + 6.7, ly, "forward path", fontsize=FS - 0.4, va="center")
+ax.plot([lx + 8.0, lx + 8.6], [ly, ly], color=GREY, lw=1.1, ls="--"); ax.text(lx + 8.7, ly, "feedback / iteration", fontsize=FS - 0.4, va="center")
+ax.text(0.35, 0.75, "Colour code: blue = Track A (patents); red = Track B (comments); yellow = model selection and matrix; "
+        "purple = mapping and attribute derivation; green = generation and validation.",
+        fontsize=FS - 1.0, color="#555555", va="center")
+fig.savefig(OUT)
+print("saved", OUT)

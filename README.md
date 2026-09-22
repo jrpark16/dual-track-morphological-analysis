@@ -22,12 +22,15 @@ Every statistic, table, and figure in the manuscript is produced by this code.
 | 1b | `scripts/02_preprocess_youtube.py` | Comment cleaning funnel: HTML/URL stripping, length filter, language filter, spam filter (3,484 → 2,789) |
 | 2 | `scripts/03_topic_modeling.py` | BERTopic per track: all-MiniLM-L6-v2 embeddings, UMAP (seeded), K-means, NPMI-coherence-based selection of K (K*=14 / K*=15) |
 | 3 | `scripts/04_sentiment_vader.py` | VADER sentiment on Track B comments |
-| 4 | `scripts/05_dimension_mapping.py` | Explicit topic-to-dimension mapping (manuscript Table 3) and dimension-level tables |
+| 4 | `scripts/05_dimension_mapping.py` | Explicit topic-to-dimension mapping (Supplementary Table S1) and dimension-level tables |
 | 5 | `scripts/06_video_dominance.py` | Video/brand dominance robustness analysis (manuscript Section 4.6) |
-| 6 | `scripts/07_figures.py`, `scripts/07b_fig1_framework.py` | Manuscript figures |
+| 6 | `scripts/07_figures.py` | Manuscript Figures 2 and 3 (data funnel; two-track comparison) and Supplementary Fig. S1 (coherence) |
 | 7 | `scripts/08_build_eval_kit.py` | Blinded expert-evaluation kit: booklet, scoring workbook, seeded blinding key |
 | 8 | `scripts/09_eval_stats.py` | Expert-evaluation statistics: condition means with 95% CIs, Friedman + Holm-corrected Wilcoxon, Kendall's W, Cohen's dz, ICC(2,1)/ICC(2,k), Cronbach's alpha |
-| 9 | `scripts/09b_fig5_eval.py` | Figure 5 (evaluation results) |
+| 9 | `scripts/09b_fig5_eval.py` | Figure 6 (expert evaluation results) |
+| 10 | `scripts/10_fig1_flowchart.py` | Figure 1: flowchart of the framework with decision points and feedback paths |
+| 11 | `scripts/11_fig4_architecture.py` | Figure 4: functional architecture of the three dual-track concepts |
+| 12 | `scripts/12_fig5_morphchart.py` | Figure 5: morphological chart comparing the nine evaluated concepts |
 
 Scripts are numbered in execution order and communicate through CSV files in
 `output/`. The same scripts are provided as Jupyter notebooks in `notebooks/`.
@@ -79,7 +82,7 @@ python scripts/04_sentiment_vader.py
 python scripts/05_dimension_mapping.py
 python scripts/06_video_dominance.py
 python scripts/07_figures.py
-python scripts/07b_fig1_framework.py
+python scripts/10_fig1_flowchart.py
 python scripts/09_eval_stats.py
 python scripts/09b_fig5_eval.py
 ```
