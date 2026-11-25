@@ -1,0 +1,16 @@
+track,topic,count,share,top_words,dimension
+B,0,67,2.4,"detroit, human, connor, john, irl, real, getting, soon, protect, till",Projection
+B,1,305,10.9,"robot, robots, movie, ai, humanoid, good, want, human, people, hope",Projection
+B,2,154,5.5,"rack, plate, trash, drying, basket, cup, cups, did, egg, dave",Task needs
+B,3,98,3.5,"cgi, real, demo, believe, looks, look, cg, isn, animation, good",Acceptance
+B,4,120,4.3,"elon, terminator, android, musk, skynet, terminators, free, set, ai, androids",Acceptance
+B,5,149,5.3,"optimus, tesla, gen, prime, transformers, bot, bumblebee, named, boston, elon",Projection
+B,6,241,8.6,"parkour, walk, backflip, walking, jump, walks, robots, thing, legs, human",Projection
+B,7,229,8.2,"future, technology, progress, time, years, world, amazing, imagine, fast, excited",Projection
+B,8,166,6.0,"ameca, atlas, boston, dynamics, gpt, ninja, warrior, chat, portal, sophia",Projection
+B,9,27,1.0,"vs, machines, mitchells, mitchell, movie, ahh, reminds, robots, irl, life",Projection
+B,10,349,12.5,"movements, facial, uncanny, expressions, movement, robot, hand, valley, human, hands",Acceptance
+B,11,179,6.4,"voice, figure, apple, speech, sounds, did, human, hand, uh, robot",Interaction
+B,12,220,7.9,"buy, want, need, clothes, house, cost, boots, clean, motorcycle, wait",Task needs
+B,13,274,9.8,"robots, ai, years, agi, robotics, advanced, going, think, imagine, future",Projection
+B,14,211,7.6,"terrifying, scary, time, scared, creepy, amazing, absolutely, terrified, cool, end",Acceptance

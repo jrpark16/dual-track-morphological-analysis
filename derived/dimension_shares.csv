@@ -1,0 +1,10 @@
+track,dimension,count,share
+A,Control,279,33.9
+A,Actuation,265,32.2
+A,Manipulation,124,15.0
+A,Structure,114,13.8
+A,Perception,42,5.1
+B,Projection,1458,52.3
+B,Acceptance,778,27.9
+B,Task needs,374,13.4
+B,Interaction,179,6.4

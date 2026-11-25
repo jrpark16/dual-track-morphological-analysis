@@ -32,8 +32,12 @@ Every statistic, table, and figure in the manuscript is produced by this code.
 | 11 | `scripts/11_fig4_architecture.py` | Figure 4: functional architecture of the three dual-track concepts |
 | 12 | `scripts/12_fig5_morphchart.py` | Figure 5: morphological chart comparing the nine evaluated concepts |
 
+The processed outputs of steps 1-5 are released in `derived/` (see *Data availability*
+below), so that the results can be inspected without re-running the pipeline or
+obtaining the raw inputs.
+
 Scripts are numbered in execution order and communicate through CSV files in
-`output/`. The same scripts are provided as Jupyter notebooks in `notebooks/`.
+`output/` (not versioned; the released subset is in `derived/`). The same scripts are provided as Jupyter notebooks in `notebooks/`.
 
 ## Reproducibility
 
@@ -51,19 +55,28 @@ stochastic across runs; the transcripts document the exact run used in the study
 
 ## Data availability
 
-Raw inputs cannot be redistributed and are therefore **not** included in this
-repository (see `data/README.md` for details and file layout):
+**Derived datasets are openly available in `derived/`** (data dictionary in
+`derived/README.md`): per-patent and per-comment topic, dimension and sentiment
+assignments, the topic solutions with their defining terms, the topic-to-dimension
+mapping (Supplementary Table S1), the dimension-level tables, the NPMI coherence
+curves, the dual-track morphological matrix (Table 5) and the video-dominance
+robustness table. De-identified expert-evaluation responses are in
+`data/eval_responses_deidentified.xlsx` (evaluator pseudonyms S01-S20), and the
+complete LLM prompts and transcripts are in `llm_runs/`.
 
-- **Patent data** (Track A) were exported from the commercial WINTELIPS database and
-  cannot be redistributed under its license. The exact query, collection date, and
-  screening criteria required to reconstruct the corpus are given in the manuscript
-  (Section 3.1) and implemented in `01_preprocess_patents.py`.
-- **YouTube comment texts** (Track B) are subject to platform terms. The four video
+Raw inputs cannot be redistributed and are therefore **not** included (see
+`data/README.md` for the expected file layout):
+
+- **Patent records** (Track A) were exported from the commercial WINTELIPS database;
+  their titles and abstracts cannot be redistributed under its license. The public
+  application numbers of all 824 valid patents are released in `derived/`, and the
+  exact query, collection date and screening criteria required to reconstruct the
+  corpus are given in the manuscript (Section 3.1) and implemented in
+  `01_preprocess_patents.py`.
+- **YouTube comment texts** (Track B) are subject to platform terms and are replaced
+  in `derived/` by a SHA-256 fingerprint of each cleaned comment. The four video
   identifiers and the collection procedure are documented in the manuscript and in
-  `00_collect_ameca.py`; the preprocessing is implemented in
-  `02_preprocess_youtube.py`.
-- **Expert-evaluation responses** are provided in de-identified form
-  (`data/eval_responses_deidentified.xlsx`; evaluator pseudonyms S01–S20).
+  `00_collect_ameca.py`; the preprocessing is implemented in `02_preprocess_youtube.py`.
 
 ## Setup
 

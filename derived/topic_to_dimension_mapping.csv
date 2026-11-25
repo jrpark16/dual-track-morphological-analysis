@@ -1,0 +1,30 @@
+track,topic,defining_terms,n_documents,dimension
+A,3,"foot, shank, leg, ankle, thigh, knee",110,Actuation
+A,13,"leg, hydraulic, thigh, hip",51,Actuation
+A,8,"waist, hip, joint, assembly",50,Actuation
+A,6,"gear, motor, screw, rotor, planetary",41,Actuation
+A,7,"pneumatic, muscle, air, cylinder",13,Actuation
+A,1,"arm, finger, palm, wrist, knuckle",65,Manipulation
+A,12,"mechanism, shoulder, arm, connecting",59,Manipulation
+A,0,"control, target, motion, angle, state",89,Control
+A,4,"biped, gait, mass, centroid, planning",87,Control
+A,2,"control method, data, posture, action",77,Control
+A,10,"gait, reinforcement, learning, training",26,Control
+A,11,"point cloud, obstacle, image, map, camera",42,Perception
+A,9,"expression, head, module, facial",75,Structure
+A,5,"head, shell, charging, heat dissipation",39,Structure
+B,12,"buy, want, need, clothes, house, cost, clean",220,Task needs
+B,2,"rack, plate, trash, drying, basket, cup",154,Task needs
+B,11,"voice, speech, sounds, human",179,Interaction
+B,10,"facial, movements, uncanny, expressions, valley",349,Acceptance
+B,14,"terrifying, scary, creepy, scared",211,Acceptance
+B,4,"terminator, skynet, android",120,Acceptance
+B,3,"cgi, real, believe, animation",98,Acceptance
+B,13,"agi, years, future, advanced, imagine",274,Projection
+B,1,"robot, movie, ai, human, hope",305,Projection
+B,6,"parkour, backflip, walk, jump",241,Projection
+B,7,"future, technology, progress, amazing",229,Projection
+B,8,"ameca, atlas, boston dynamics, sophia",166,Projection
+B,5,"optimus, tesla, transformers, elon",149,Projection
+B,0,"detroit, connor, human (pop culture)",67,Projection
+B,9,mitchells vs machines (pop culture),27,Projection

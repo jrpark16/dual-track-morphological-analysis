@@ -1,0 +1,16 @@
+topic,Ameca,Boston Dynamics Atlas,Figure 01 (OpenAI),Tesla Optimus Gen 2,n,max_share,dominated,dimension
+0,44.8,6.0,29.9,19.4,67,44.8,False,Projection
+1,29.2,14.4,29.2,27.2,305,29.2,False,Projection
+2,7.1,26.6,48.7,17.5,154,48.7,False,Task needs
+3,36.7,33.7,22.4,7.1,98,36.7,False,Acceptance
+4,19.2,12.5,25.8,42.5,120,42.5,False,Acceptance
+5,0.7,7.4,11.4,80.5,149,80.5,True,Projection
+6,6.6,61.8,4.6,27.0,241,61.8,True,Projection
+7,21.8,18.8,34.5,24.9,229,34.5,False,Projection
+8,29.5,45.2,15.7,9.6,166,45.2,False,Projection
+9,0.0,3.7,7.4,88.9,27,88.9,True,Projection
+10,45.6,22.3,14.9,17.2,349,45.6,False,Acceptance
+11,4.5,1.7,90.5,3.4,179,90.5,True,Interaction
+12,9.5,30.9,20.9,38.6,220,38.6,False,Task needs
+13,20.4,23.0,29.2,27.4,274,29.2,False,Projection
+14,29.4,36.0,21.3,13.3,211,36.0,False,Acceptance

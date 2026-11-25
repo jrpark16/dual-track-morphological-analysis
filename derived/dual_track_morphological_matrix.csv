@@ -1,0 +1,37 @@
+track,dimension,attribute_index,attribute
+A,Actuation,1,Electric geared motor drive
+A,Actuation,2,Hydraulic actuator
+A,Actuation,3,Pneumatic artificial muscle
+A,Actuation,4,Linear screw actuator
+A,Manipulation,1,Dexterous multi-finger hand
+A,Manipulation,2,Underactuated linkage hand
+A,Manipulation,3,Modular arm assembly
+A,Manipulation,4,Soft gripper
+A,Control,1,Model-based balance control (ZMP/centroid)
+A,Control,2,Whole-body motion planning
+A,Control,3,Reinforcement-learning locomotion
+A,Control,4,Vision-guided follow-up control
+A,Perception,1,3D point-cloud sensing (LiDAR/depth)
+A,Perception,2,Vision-based object recognition
+A,Perception,3,Obstacle detection and mapping
+A,Perception,4,Tactile/force sensing
+A,Structure,1,Expressive facial head module
+A,Structure,2,Protective shell with thermal management
+A,Structure,3,Integrated charging/docking design
+A,Structure,4,Human-friendly exterior styling
+B,Task needs,1,Household chores (dishes/tidying)
+B,Task needs,2,Clothing and laundry handling
+B,Task needs,3,Affordable consumer price point
+B,Task needs,4,Personal errand assistance
+B,Interaction,1,Natural voice conversation
+B,Interaction,2,Human-like speech prosody
+B,Interaction,3,Real-time speech-to-speech reasoning
+B,Interaction,4,Expressive face/gesture cues
+B,Acceptance,1,Calibrated human-likeness (uncanny-safe)
+B,Acceptance,2,Visible safety controls
+B,Acceptance,3,Capability transparency (no staging)
+B,Acceptance,4,"Predictable, legible behavior"
+B,Projection,1,Brand credibility
+B,Projection,2,Futuristic tech symbolism
+B,Projection,3,Pop-culture-aware positioning
+B,Projection,4,Demonstrable capability milestones

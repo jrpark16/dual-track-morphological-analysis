@@ -1,0 +1,15 @@
+track,topic,count,share,top_words,dimension
+A,0,89,10.8,"control, humanoid, robot, target, motion, angle, state, joint, based, expected",Control
+A,1,65,7.9,"arm, driving, connecting, finger, palm, piece, assembly, wrist, knuckle, hand",Manipulation
+A,2,77,9.3,"action, data, control, robot, humanoid, information, posture, human, motion, target",Control
+A,3,110,13.3,"foot, shank, structure, leg, joint, ankle, thigh, plate, mechanism, knee",Actuation
+A,4,87,10.6,"biped, robot, control, gait, mass, expected, center, centroid, motion, planning",Control
+A,5,39,4.7,"head, shell, charging, heat, robot, humanoid, sensor, circuit, dissipation, control",Structure
+A,6,41,5.0,"gear, motor, screw, rotor, stator, planetary, magnetic, shaft, roller, ring",Actuation
+A,7,13,1.6,"pneumatic, muscles, joints, air, cylinder, joint, shoulder, big, inflation, drive",Actuation
+A,8,50,6.1,"waist, hip, driving, second, joint, piece, assembly, structure, connecting, connected",Actuation
+A,9,75,9.1,"robot, humanoid, expression, module, head, control, processing, intelligence, data, facial",Structure
+A,10,26,3.2,"gait, learning, reinforcement, training, robot, strategy, network, motion, biped, neural",Control
+A,11,42,5.1,"point, obstacle, cloud, image, humanoid, object, robot, path, map, camera",Perception
+A,12,59,7.2,"mechanism, joint, second, connecting, piece, connected, shoulder, arm, mounting, module",Manipulation
+A,13,51,6.2,"leg, hydraulic, joint, thigh, robot, structure, shank, hip, assembly, rotating",Actuation

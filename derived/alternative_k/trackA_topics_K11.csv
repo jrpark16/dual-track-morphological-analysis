@@ -1,0 +1,12 @@
+track,K,topic,count,share,top_words
+A,11,0,149,14.7,"leg, structure, joint, foot, shank, robot, thigh, ankle, mechanism, knee"
+A,11,3,140,13.8,"robot, control, humanoid, target, motion, state, steps, based, joint, angle"
+A,11,6,100,9.9,"robot, humanoid, data, action, cloud, point, environment, based, control, image"
+A,11,5,99,9.8,"motor, gear, joint, shell, mechanism, module, shaft, connected, humanoid, end"
+A,11,10,95,9.4,"humanoid, robot, module, control, sensor, expression, head, facial, charging, information"
+A,11,1,92,9.1,"interface, design, screen, user, display, computer, variable, condition, graphic, panel"
+A,11,4,90,8.9,"arm, joint, connecting, driving, shoulder, connected, assembly, pneumatic, piece, finger"
+A,11,7,85,8.4,"biped, robot, control, expected, motion, mass, center, gait, planning, track"
+A,11,8,63,6.2,"hip, waist, second, piece, driving, assembly, joint, plate, connected, connecting"
+A,11,2,52,5.1,"design, appearance, product, image, illustrates, key, best, purpose, shape, lies"
+A,11,9,50,4.9,"design, product, features, view, shape, best, shows, incorporating, perspective, essential"

@@ -8,6 +8,8 @@ authors:
     given-names: Kangsun
 repository-code: "https://github.com/jrpark16/dual-track-morphological-analysis"
 license: MIT
+version: 1.2.0
+date-released: 2026-11-25
 preferred-citation:
   type: article
   title: "Technology Opportunity Discovery for Humanoid Robots Using Dual-Track Morphological Analysis Integrating Technological Feasibility and Social Acceptance"
